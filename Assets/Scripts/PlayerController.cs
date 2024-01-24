@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     private int count;
+    public GameObject winText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         setCountText();
+        winText.SetActive(false);
     }
 
     void OnMove(InputValue movementValue)
@@ -46,6 +48,10 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
             setCountText();
+        }
+        if(count >= 12)
+        {
+            winText.SetActive(true);
         }
     }
 }
